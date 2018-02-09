@@ -34,9 +34,18 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
+
+
   def delete()
     sql = "DELETE FROM customers where id = $1"
     values = [@id]
+  end
+
+  def tickets()
+    sql = "SELECT * FROM tickets WHERE tickets.customer_id = $1"
+    values = [@id]
+    tickets = SqlRunner.run(sql, values)
+    return tickets.map{|ticket| Ticket.new(ticket)}
   end
 
   def films()

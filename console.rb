@@ -76,7 +76,7 @@ film3 = Film.new(
         'customer_id' => customer2.id, 'film_id' => film1.id
       }
     )
-    ticket4.save()
+    ticket4.save
 
 
     customer1.name = 'Bilbo Baggins'
