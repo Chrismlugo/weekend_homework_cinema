@@ -1,5 +1,5 @@
 require_relative ('../db/sql_runner')
-require ('pry-byebug')
+
 
 class Ticket
 
@@ -48,6 +48,10 @@ class Ticket
     values = [@customer_id]
     customer = SqlRunner.run(sql, values)[0]
     return Customer.new(customer)
+  end
+
+  def wallet_balance
+
   end
 
   def self.all()
