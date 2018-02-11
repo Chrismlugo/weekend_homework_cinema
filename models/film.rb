@@ -53,6 +53,14 @@ class Film
     return customers.map{|customer| Customer.new(customer)}.count
   end
 
+  # def most_popular
+  #   sql = "SELECT * FROM films"
+  #   films = SqlRunner(sql, values)
+  #   total = films.map{|film| Film.new( film )}
+  #
+  #
+  # end
+
   def self.all()
     sql = "SELECT * FROM films"
     values = []

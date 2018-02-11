@@ -34,22 +34,14 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
-  # def update_wallet()
-  #   sql = "UPDATE customers SET funds = (funds - $1) WHERE id = $2"
-  #   values = [tickets.films.price, tickets.film_id]
-  #   SqlRunner.run(sql, values)
-  #
-  # end
-
-  # def ticket_count
-  #
-  # end
-
 
   def delete()
     sql = "DELETE FROM customers where id = $1"
     values = [@id]
   end
+
+
+
 
   def tickets()
     sql = "SELECT * FROM tickets WHERE tickets.customer_id = $1"
@@ -57,7 +49,7 @@ class Customer
     tickets = SqlRunner.run(sql, values)
     return tickets.map{|ticket| Ticket.new(ticket)}
   end
-  
+
   def tickets_count()
     sql = "SELECT * FROM tickets WHERE tickets.customer_id = $1"
     values = [@id]

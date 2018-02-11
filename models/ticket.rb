@@ -33,6 +33,13 @@ class Ticket
     SqlRunner.run(sql, values)
   end
 
+  def purchase()
+    sql = "UPDATE customers SET funds = (funds - $1) WHERE id = $2"
+    values = [@price, @film_id]
+    SqlRunner.run(sql, values)
+
+  end
+
 
 
   def delete()
@@ -52,14 +59,6 @@ class Ticket
     values = [@customer_id]
     customer = SqlRunner.run(sql, values)[0]
     return Customer.new(customer)
-  end
-
-  def wallet_balance
-    for ticket in tickets
-      if tickets.customer_id == tickets.film_id
-        return customer.funds - film.price
-      end
-    end
   end
 
   def self.all()

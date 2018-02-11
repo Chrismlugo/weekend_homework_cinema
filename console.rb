@@ -104,8 +104,13 @@ film3 = Film.new(
     )
     screening3.save()
 
+    ticket1.purchase()
+    ticket2.purchase()
+    ticket3.purchase()
+    ticket4.purchase()
 
-    
+
+
 
 
 
