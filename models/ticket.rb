@@ -2,6 +2,8 @@ require_relative ('../db/sql_runner')
 
 
 class Ticket
+  attr_accessor :customer_id, :film_id
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -31,6 +33,8 @@ class Ticket
     SqlRunner.run(sql, values)
   end
 
+
+
   def delete()
     sql = "DELETE FROM tickets where id = $1"
     values = [@id]
@@ -51,7 +55,11 @@ class Ticket
   end
 
   def wallet_balance
-
+    for ticket in tickets
+      if tickets.customer_id == tickets.film_id
+        return customer.funds - film.price
+      end
+    end
   end
 
   def self.all()
